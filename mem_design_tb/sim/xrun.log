@@ -1,0 +1,142 @@
+xrun: 22.03-s004: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun	22.03-s004: Started on Sep 04, 2023 at 18:48:12 CDT
+irun
+	-f run.f
+		+access+rwc
+		-gui
+		-timescale 1ns/1ns
+		../design/simple_mem.sv
+		../tb/simple_mem_tb.sv
+xrun: *W,NCEXDEP: Executable (irun) is deprecated. Use (xrun) instead.
+Recompiling... reason: file '../tb/simple_mem_tb.sv' is newer than expected.
+	expected: Mon Sep  4 18:35:21 2023
+	actual:   Mon Sep  4 18:47:46 2023
+file: ../tb/simple_mem_tb.sv
+           	mem_read(addr);  // Executes Read Operation
+           	       |
+xmvlog: *W,FAAOP1 (../tb/simple_mem_tb.sv,51|19): task or function call does not specify all formal output arguments [10.2.2][10.3(IEEE)].
+  task mem_read (input logic [4:0] addr_in, output logic [7:0] data_rd);
+                                                                     |
+xmvlog: *W,FAAOP2 (../tb/simple_mem_tb.sv,100|69): Formal output argument 'data_rd' is absent in the task or function call identified by the previous error message [10.2.2][10.3(IEEE)].
+           	mem_read('b11111);  // Executes Read Operation
+           	       |
+xmvlog: *W,FAAOP1 (../tb/simple_mem_tb.sv,54|19): task or function call does not specify all formal output arguments [10.2.2][10.3(IEEE)].
+  task mem_read (input logic [4:0] addr_in, output logic [7:0] data_rd);
+                                                                     |
+xmvlog: *W,FAAOP2 (../tb/simple_mem_tb.sv,100|69): Formal output argument 'data_rd' is absent in the task or function call identified by the previous error message [10.2.2][10.3(IEEE)].
+           	mem_read(5'b0);              // Reading the final value in the memory after 2 write operations
+           	       |
+xmvlog: *W,FAAOP1 (../tb/simple_mem_tb.sv,79|19): task or function call does not specify all formal output arguments [10.2.2][10.3(IEEE)].
+  task mem_read (input logic [4:0] addr_in, output logic [7:0] data_rd);
+                                                                     |
+xmvlog: *W,FAAOP2 (../tb/simple_mem_tb.sv,100|69): Formal output argument 'data_rd' is absent in the task or function call identified by the previous error message [10.2.2][10.3(IEEE)].
+	module worklib.mem_test:sv
+		errors: 0, warnings: 6
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		mem_test
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.mem_test:sv <0x4e60a220>
+			streams:  12, words:  9535
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Registers:              13      13
+		Scalar wires:            4       -
+		Vectored wires:          3       -
+		Always blocks:           2       2
+		Initial blocks:          1       1
+		Pseudo assignments:      6       6
+		Simulation timescale:  1ns
+	Writing initial simulation snapshot: worklib.mem_test:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /opt/coe/cadence/XCELIUM/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm mem_test.mem_inst.addr mem_test.mem_inst.clk mem_test.mem_inst.data_in mem_test.mem_inst.data_out mem_test.mem_inst.memory mem_test.mem_inst.rd_en mem_test.mem_inst.rst_n mem_test.mem_inst.wr_en
+Created probe 1
+xcelium> run 2000ns
+Asynch Memory Reset
+Current Address = 00, Value of data_out in case of read operation is = 00
+Current Address = 01, Value of data_out in case of read operation is = 00
+Current Address = 02, Value of data_out in case of read operation is = 00
+Current Address = 03, Value of data_out in case of read operation is = 00
+Current Address = 04, Value of data_out in case of read operation is = 00
+Current Address = 05, Value of data_out in case of read operation is = 00
+Current Address = 06, Value of data_out in case of read operation is = 00
+Current Address = 07, Value of data_out in case of read operation is = 00
+Current Address = 08, Value of data_out in case of read operation is = 00
+Current Address = 09, Value of data_out in case of read operation is = 00
+Current Address = 0a, Value of data_out in case of read operation is = 00
+Current Address = 0b, Value of data_out in case of read operation is = 00
+Current Address = 0c, Value of data_out in case of read operation is = 00
+Current Address = 0d, Value of data_out in case of read operation is = 00
+Current Address = 0e, Value of data_out in case of read operation is = 00
+Current Address = 0f, Value of data_out in case of read operation is = 00
+Current Address = 10, Value of data_out in case of read operation is = 00
+Current Address = 11, Value of data_out in case of read operation is = 00
+Current Address = 12, Value of data_out in case of read operation is = 00
+Current Address = 13, Value of data_out in case of read operation is = 00
+Current Address = 14, Value of data_out in case of read operation is = 00
+Current Address = 15, Value of data_out in case of read operation is = 00
+Current Address = 16, Value of data_out in case of read operation is = 00
+Current Address = 17, Value of data_out in case of read operation is = 00
+Current Address = 18, Value of data_out in case of read operation is = 00
+Current Address = 19, Value of data_out in case of read operation is = 00
+Current Address = 1a, Value of data_out in case of read operation is = 00
+Current Address = 1b, Value of data_out in case of read operation is = 00
+Current Address = 1c, Value of data_out in case of read operation is = 00
+Current Address = 1d, Value of data_out in case of read operation is = 00
+Current Address = 1e, Value of data_out in case of read operation is = 00
+Current Address = 1f, Value of data_out in case of read operation is = 00
+Current address = 00, Value of data_in in case of write operation is = 00
+Current address = 01, Value of data_in in case of write operation is = 01
+Current address = 02, Value of data_in in case of write operation is = 02
+Current address = 03, Value of data_in in case of write operation is = 03
+Current address = 04, Value of data_in in case of write operation is = 04
+Current address = 05, Value of data_in in case of write operation is = 05
+Current address = 06, Value of data_in in case of write operation is = 06
+Current address = 07, Value of data_in in case of write operation is = 07
+Current address = 08, Value of data_in in case of write operation is = 08
+Current address = 09, Value of data_in in case of write operation is = 09
+Current address = 0a, Value of data_in in case of write operation is = 0a
+Current address = 0b, Value of data_in in case of write operation is = 0b
+Current address = 0c, Value of data_in in case of write operation is = 0c
+Current address = 0d, Value of data_in in case of write operation is = 0d
+Current address = 0e, Value of data_in in case of write operation is = 0e
+Current address = 0f, Value of data_in in case of write operation is = 0f
+Current address = 10, Value of data_in in case of write operation is = 10
+Current address = 11, Value of data_in in case of write operation is = 11
+Current address = 12, Value of data_in in case of write operation is = 12
+Current address = 13, Value of data_in in case of write operation is = 13
+Current address = 14, Value of data_in in case of write operation is = 14
+Current address = 15, Value of data_in in case of write operation is = 15
+Current address = 16, Value of data_in in case of write operation is = 16
+Current address = 17, Value of data_in in case of write operation is = 17
+Current address = 18, Value of data_in in case of write operation is = 18
+Current address = 19, Value of data_in in case of write operation is = 19
+Current address = 1a, Value of data_in in case of write operation is = 1a
+Current address = 1b, Value of data_in in case of write operation is = 1b
+Current address = 1c, Value of data_in in case of write operation is = 1c
+Current address = 1d, Value of data_in in case of write operation is = 1d
+Current address = 1e, Value of data_in in case of write operation is = 1e
+Current address = 1f, Value of data_in in case of write operation is = 1f
+Current address = 00, Value of data_in in case of write operation is = 72
+Current address = 00, Value of data_in in case of write operation is = 77
+Current Address = 00, Value of data_out in case of read operation is = 05
+Expected Value after reading the data_out is 77 
+Current Value after reading the data_out is 05
+Ran until 2 US + 0
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun	22.03-s004: Exiting on Sep 04, 2023 at 19:22:43 CDT  (total: 00:34:31)
